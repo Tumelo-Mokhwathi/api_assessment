@@ -43,7 +43,10 @@ namespace api_assessment
             });
             services.AddTransient<ICompanyService, CompanyService>();
             services.AddTransient<IUserService, UserService>();
-            services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("Database"));
+            //SQL Server
+            services.AddDbContext<ApplicationDbContext>(opt => opt.UseSqlServer("SQLDatabase"));
+            //You can use in memory database
+            //services.AddDbContext<ApplicationDbContext>(opt => opt.UseInMemoryDatabase("NoSQLDatabase"));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
